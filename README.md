@@ -12,4 +12,4 @@ The game ends when one of the players loses all their lives. At this point, the 
 
 ## Demonstration
 
-!["Demonstration of the math game."](https://github.com/Shamayal/math_game/blob/main/demo.gif)
+!["Demonstration of the math game."](https://github.com/Shamayal/math_game/blob/main/play-game.gif)
