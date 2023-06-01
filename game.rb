@@ -1,7 +1,10 @@
+
 class Game
 
+  attr_accessor :current_player, :num1, :num2, :sum, :answer
+
   # get names of the players
-  def initialize(player1, player2)
+  def initialize
     puts "Player 1, enter your name."
     @player1 = Player.new(gets.chomp)
     puts "Player 2, enter your name."
@@ -15,21 +18,24 @@ class Game
       puts "----- NEW TURN -----"
       generate_question
       if @answer == @sum
-        puts "#{@current_player.name}: YES! You are correct."
+        puts "#{@current_player.name}: ✅ YES! You are correct."
         @current_player.update_score
         puts "P1: #{@player1.lives}/3 vs P2: #{@player2.lives}/3"
 
-        swith_player
+        switch_player
       else
-        puts "#{current_player}: Seriously? No!"
+        puts "#{@current_player.name}: ❌ Seriously? No!"
         @current_player.lose_life
+        puts "P1: #{@player1.lives}/3 vs P2: #{@player2.lives}/3"
 
         switch_player
+      end
     end
 
-    puts Player 1 wins with a score of4
+    declare_winner
     puts "----- GAME OVER -----"
-    puts "Thanks for playing, good bye!"
+    puts "Thanks for playing 😁, good bye!"
+
   end
 
   def generate_question
@@ -42,5 +48,13 @@ class Game
 
   def switch_player
     @current_player == @player1 ? (@current_player = @player2) : (@current_player = @player1)
+  end
 
+  def declare_winner 
+    if @player1.lives == 0
+      puts "#{@player2.name} wins with a score of #{@player2.lives}/3 and a total of #{@player2.score} correct answers!"
+    else 
+      puts "#{@player1.name} wins with a score of #{@player1.lives}/3 and a total of #{@player1.score} correct answers!"
+    end
+  end
 end
